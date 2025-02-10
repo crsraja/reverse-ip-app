@@ -112,7 +112,7 @@ data "aws_iam_policy_document" "codebuild" {
     actions = [
       "logs:CreateLogGroup",
       "logs:CreateLogStream",
-      "logs:PutLogEvents"
+      "logs:PutLogEvents",
     ]
 
     resources = [
@@ -125,7 +125,7 @@ data "aws_iam_policy_document" "codebuild" {
       "secretsmanager:*",
       "kms:ListAliases",
       "kms:ListKeys",
-      "kms:DescribeKey"
+      "kms:DescribeKey",
     ]
 
     resources = [
