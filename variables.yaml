@@ -7,3 +7,4 @@ github_repo: https://github.com/crsraja/reverse-ip-app
 github_branch: "main"
 github_token: 
 security_scan_enabled: true
+aws_account_id: "061039766436"
