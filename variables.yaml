@@ -5,6 +5,6 @@ vpc_cidr: "10.0.0.0/16"
 subnet_cidr: "10.0.1.0/24"
 github_repo: https://github.com/crsraja/reverse-ip-app
 github_branch: "main"
-github_token: 
+github_token: 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
 security_scan_enabled: true
 aws_account_id: "061039766436"
