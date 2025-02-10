@@ -107,18 +107,6 @@ resource "aws_iam_role" "codebuild" {
 }
 
 data "aws_iam_policy_document" "codebuild" {
-  
-  statement {
-    actions = [
-      "logs:CreateLogGroup",
-      "logs:CreateLogStream",
-      "logs:PutLogEvents",
-    ]
-
-    resources = [
-      "*",
-    ]
-  }
 
  statement {
     actions = [
@@ -132,6 +120,19 @@ data "aws_iam_policy_document" "codebuild" {
       "*",
     ]
   }
+
+  statement {
+    actions = [
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents",
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+
 }
 
 
