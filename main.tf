@@ -103,10 +103,7 @@ resource "aws_iam_role" "codebuild" {
       Action = "sts:AssumeRole"
     }]
   })
-    inline_policy {
-    name = "codebuild_execute_policy"
-    policy = data.aws_iam_policy_document.codebuild.json
-  }
+    
 }
 
 data "aws_iam_policy_document" "codebuild" {
@@ -115,7 +112,7 @@ data "aws_iam_policy_document" "codebuild" {
     actions = [
       "logs:CreateLogGroup",
       "logs:CreateLogStream",
-      "logs:PutLogEvents",
+      "logs:PutLogEvents"
     ]
 
     resources = [
@@ -123,6 +120,18 @@ data "aws_iam_policy_document" "codebuild" {
     ]
   }
 
+ statement {
+    actions = [
+      "secretsmanager:*",
+      "kms:ListAliases",
+      "kms:ListKeys",
+      "kms:DescribeKey"
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
 }
 
 
