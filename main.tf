@@ -108,19 +108,6 @@ resource "aws_iam_role" "codebuild" {
 
 data "aws_iam_policy_document" "codebuild" {
 
- statement {
-    actions = [
-      "secretsmanager:*",
-      "kms:ListAliases",
-      "kms:ListKeys",
-      "kms:DescribeKey",
-    ]
-
-    resources = [
-      "*",
-    ]
-  }
-
   statement {
     actions = [
       "logs:CreateLogGroup",
