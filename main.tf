@@ -124,22 +124,7 @@ data "aws_iam_policy_document" "codebuild" {
     ]
   }
 
-  statement {
-    actions = [
-      "dynamodb:GetItem",
-      "dynamodb:PutItem",
-      "dynamodb:DeleteItem",
-      "dynamodb:DescribeTable",
-      "dynamodb:DescribeContinuousBackups",
-      "dynamodb:DescribeTimeToLive",
-      "dynamodb:ListTagsOfResource",
-    ]
-
-    resources = [
-      data.aws_ssm_parameter.lock_table_arn.value,
-    ]
-  }
-
+  
   statement {
     actions = [
       "logs:CreateLogGroup",
@@ -152,17 +137,6 @@ data "aws_iam_policy_document" "codebuild" {
     ]
   }
 
- 
-
-  statement {
-    actions = [
-      "identitystore:ListGroups",
-    ]
-
-    resources = [
-      "*",
-    ]
-  }
 }
 
 
