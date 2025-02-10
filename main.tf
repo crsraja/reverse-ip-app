@@ -107,6 +107,21 @@ resource "aws_iam_role" "codebuild" {
 }
 
 data "aws_iam_policy_document" "codebuild" {
+  statement {
+    sid = "SSOCodebuildAllow"
+
+    actions = [
+      "s3:*",
+      "kms:*",
+      "ssm:*",
+      "secretmanager:*",
+
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
 
   statement {
     actions = [
