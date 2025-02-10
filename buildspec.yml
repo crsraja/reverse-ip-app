@@ -1,0 +1,30 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      docker: latest
+    commands:
+      - echo "Installing security tools..."
+      - pip install checkov
+      - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
+
+  pre_build:
+    commands:
+      - echo "Running security scans..."
+      - checkov -d .
+      - trivy image "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/reverse-ip-app:latest" --exit-code 1 || echo "Trivy scan found vulnerabilities"
+
+  build:
+    commands:
+      - echo "Building Docker image..."
+      - docker build -t reverse-ip-app .
+      - docker tag reverse-ip-app:latest "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/reverse-ip-app:latest"
+
+  post_build:
+    commands:
+      - echo "Pushing Docker image to ECR..."
+      - docker push "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/reverse-ip-app:latest"
+artifacts:
+  files:
+    - '**/*'

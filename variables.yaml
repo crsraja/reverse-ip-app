@@ -1,0 +1,9 @@
+aws_region: us-east-1
+ecs_cluster_name: decs
+ecr_repository_name: reverse-ip-app
+vpc_cidr: "10.0.0.0/16"
+subnet_cidr: "10.0.1.0/24"
+github_repo: https://github.com/crsraja/reverse-ip-app
+github_branch: "main"
+github_token: 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
+security_scan_enabled: true
