@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM public.ecr.aws/sam/build-python3.11:1.92.0
 WORKDIR /app
 COPY app.py /app
 COPY requirements.txt /app
