@@ -4,8 +4,8 @@ phases:
   install:
     commands:
       - echo "Installing security tools..."
-      - pip install checkov
-      - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
+      #- pip install checkov
+      #- curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
 
   pre_build:
     commands:

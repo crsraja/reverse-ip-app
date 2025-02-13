@@ -212,10 +212,10 @@ resource "aws_codebuild_project" "codebuild" {
       value = local.config["ecr_repository_name"]
     } 
     
-#    environment_variable {
-#      name  = "IMAGE_TAG"
-#      value = local.config["latest"]
-#    } 
+    environment_variable {
+      name  = "IMAGE_TAG"
+      value = local.config["latest"]
+    } 
     environment_variable {
       name  = "AWS_REGION"
       value = local.config["aws_region"]
