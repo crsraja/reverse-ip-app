@@ -103,19 +103,22 @@ resource "aws_iam_role" "codebuild" {
       Action = "sts:AssumeRole"
     }]
   })
-    
+
+  inline_policy {
+    name = "codepipeline_execute_policy"
+    policy = data.aws_iam_policy_document.codebuild.json
+  }
+
+
 }
 
 data "aws_iam_policy_document" "codebuild" {
   statement {
-    sid = "SSOCodebuildAllow"
-
     actions = [
       "s3:*",
       "kms:*",
       "ssm:*",
       "secretmanager:*",
-
     ]
 
     resources = [
