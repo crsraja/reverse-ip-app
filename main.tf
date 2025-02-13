@@ -135,6 +135,21 @@ data "aws_iam_policy_document" "codebuild" {
     ]
   }
 
+  statement {
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:CompleteLayerUpload",
+      "ecr:GetAuthorizationToken",
+      "ecr:InitiateLayerUpload",
+      "ecr:PutImage",
+      "ecr:UploadLayerPart" 
+      ]
+
+    resources = [
+      "*",
+    ]
+  }
+
 }
 
 
@@ -189,6 +204,15 @@ resource "aws_codebuild_project" "codebuild" {
       name  = "AWS_ACCOUNT_ID"
       value = local.config["aws_account_id"]
     } 
+    environment_variable {
+      name  = "IMAGE_REPO_NAME"
+      value = local.config["ecr_repository_name"]
+    } 
+    
+#    environment_variable {
+#      name  = "IMAGE_TAG"
+#      value = local.config["latest"]
+#    } 
     environment_variable {
       name  = "AWS_REGION"
       value = local.config["aws_region"]
