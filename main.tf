@@ -118,7 +118,7 @@ data "aws_iam_policy_document" "codebuild" {
       "s3:*",
       "kms:*",
       "ssm:*",
-      "secretmanager:*",
+      "secretsmanager:*",
     ]
 
     resources = [
