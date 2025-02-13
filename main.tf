@@ -214,7 +214,7 @@ resource "aws_codebuild_project" "codebuild" {
     
     environment_variable {
       name  = "IMAGE_TAG"
-      value = local.config["latest"]
+      value = "latest"
     } 
     environment_variable {
       name  = "AWS_REGION"
