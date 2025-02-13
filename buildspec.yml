@@ -2,8 +2,6 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      docker: latest
     commands:
       - echo "Installing security tools..."
       - pip install checkov
