@@ -23,7 +23,8 @@ phases:
   post_build:
     commands:
       - echo "Pushing Docker image to ECR..."
-      - aws --profile ${local.aws_profile} ecr get-login-password --region ${local.aws_region} | docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
+      - aws  ecr get-login ${aws_access_key_id} ${aws_secret_access_key}
+#      - aws --profile ${local.aws_profile} ecr get-login-password --region ${local.aws_region} | docker login --username AWS --password-stdin "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
       - docker push "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/reverse-ip-app:latest"
       #- docker push "061039766436.dkr.ecr.us-east-1.amazonaws.com/reverse-ip-app:latest"
 
