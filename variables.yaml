@@ -8,6 +8,4 @@ github_branch: "main"
 github_token: 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
 security_scan_enabled: true
 aws_account_id: "061039766436"
-aws_access_key_id: "AKIAQ4NSA5OSJQIERZ67"
-aws_secret_access_key: "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"
 aws_profile: default
