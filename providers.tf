@@ -4,6 +4,7 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 5.0"
     }
+    
   }
 
   backend "s3" {
@@ -17,4 +18,5 @@ terraform {
 
 provider "aws" {
   region = local.config["aws_region"]
+  profile = local.config["aws_profile"]
 }
